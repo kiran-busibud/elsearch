@@ -65,4 +65,7 @@ Route::post('/test', function(Request $request){
 });
 
 
+Route::get('/index/')
+
+
 

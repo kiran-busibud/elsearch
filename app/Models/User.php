@@ -11,7 +11,7 @@ use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,Searchable;
+    use HasApiTokens, HasFactory, Notifiable, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -42,4 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+        $array['tenant_id'] = '1';
+        return $array;
+    }
 }
